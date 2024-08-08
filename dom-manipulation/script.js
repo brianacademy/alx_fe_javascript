@@ -26,7 +26,7 @@ const showRandomQuote = () => {
   //console.log(quotesArray[Math.floor(Math.random() * quotesArray.length)]);
 };
 
-const addQuote = () => {
+const createAddQuoteForm = () => {
   const quoteText = newQuoteText.value;
   const quoteCategory = newQuoteCategory.value;
 
