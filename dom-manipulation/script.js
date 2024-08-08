@@ -17,7 +17,7 @@ quotesArray.push({
   category: "politics"
 });
 
-const showRandomQuote = () => {  
+const displayRandomQuote = () => {  
   // create H3 element which display the quote
   const h3 = document.createElement('h3');
   let randomQuote = quotesArray[Math.floor(Math.random() * quotesArray.length)];
@@ -34,4 +34,4 @@ const addQuote = () => {
 
 };
 
-newQuote.addEventListener("click", showRandomQuote);
+newQuote.addEventListener("click", displayRandomQuote);
