@@ -17,11 +17,11 @@ quotesArray.push({
   category: "politics"
 });
 
-const displayRandomQuote = () => {  
+const showRandomQuote = () => {  
   // create H3 element which display the quote
   const h3 = document.createElement('h3');
   let randomQuote = quotesArray[Math.floor(Math.random() * quotesArray.length)];
-  h3.textContent = randomQuote.text + ` ( ${randomQuote.category} )`;
+  h3.innerHTML = randomQuote.text + ` ( ${randomQuote.category} )`;
   displayQuote.appendChild(h3);
   //console.log(quotesArray[Math.floor(Math.random() * quotesArray.length)]);
 };
@@ -34,4 +34,4 @@ const addQuote = () => {
 
 };
 
-newQuote.addEventListener("click", displayRandomQuote);
+newQuote.addEventListener("click", showRandomQuote);
