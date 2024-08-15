@@ -4,6 +4,7 @@ const displayQuote = document.getElementById("quoteDisplay");
 const newQuoteText = document.getElementById("newQuoteText");
 const newQuoteCategory = document.getElementById("newQuoteCategory"); 
 const existQuote = document.querySelector('.existQuote');
+const downloadButton = document.getElementById('download');
 
 /*
 quotesArray.push({
@@ -50,5 +51,33 @@ const showRandomQuote = () => {
   displayQuote.appendChild(h3);
   //console.log(quotesArray[Math.floor(Math.random() * quotesArray.length)]);
 };
+
+const JSONToFile = (quotesArray, filename) => {
+  const blob = new Blob([JSON.stringify(quotesArray, null, 2)], {
+    type: 'application/json',
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${filename}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  downloadButton.appendChild(a);
+};
+
+JSONToFile({ test: 'is passed' }, 'testJSONFile');
+// downloads the object as 'testJSONFile.json'
+
+function importFromJsonFile(event) {
+  const fileReader = new FileReader();
+  fileReader.onload = function(event) {
+    const importedQuotes = JSON.parse(event.target.result);
+    quotes.push(...importedQuotes);
+    saveQuotes();
+    alert('Quotes imported successfully!');
+  };
+  fileReader.readAsText(event.target.files[0]);
+}
 
 newQuote.addEventListener("click", showRandomQuote);
